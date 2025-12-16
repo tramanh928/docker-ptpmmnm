@@ -1,21 +1,12 @@
 const express = require("express");
-const mysql = require("mysql2");
 
 const app = express();
 
-const db = mysql.createConnection({
-  host: "mysql",
-  user: "root",
-  password: "root",
-  database: "testdb"
-});
-
-db.connect(() => console.log("Connected to MySQL"));
-
 app.get("/", (req, res) => {
-  res.send("Backend running with MySQL + Docker");
+  res.send("Backend running with Node.js + Docker ");
 });
 
-app.listen(3000, () => {
-  console.log("Backend running on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Backend running on port", PORT);
 });
